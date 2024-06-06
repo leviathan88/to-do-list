@@ -1,14 +1,14 @@
 const input = document.querySelector('input');
-const addButton = document.querySelector('button');
-const section = document.querySelector('section');
+const addButton = document.getElementById('addButton');
+const section = document.getElementById('data');
 
 const addFunction = () => {
     const div = document.createElement('div')
     const p = document.createElement('p')
     const deleteButton = document.createElement('button')
-    deleteButton.innerHTML = 'delete'
     p.innerHTML = input.value
-    if (input.value.trim() === '') alert('error')
+    deleteButton.innerHTML = 'delete'
+    if (input.value.trim() === '') alert('empty string')
     else {
         section.append(div)
         div.append(p, deleteButton);
@@ -21,7 +21,5 @@ const otherFunction = (e) => {
     else if (e.target.tagName === 'P') e.target.style.textDecoration = 'line-through';
 }
 
-const press = (e) => e.key === 'Enter' && addFunction();
 addButton.addEventListener('click', addFunction);
-input.addEventListener('keydown', press);
 section.addEventListener('click', otherFunction)
